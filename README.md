@@ -1,47 +1,47 @@
 # thai-pila-game
 
-เกม THAI PILA บน Phaser 3 + Webpack + TypeScript
+THAI PILA games built with Phaser 3 + Webpack + TypeScript.
 
-## ความต้องการของระบบ
+## Requirements
 
-- [Node.js](https://nodejs.org/) 18 ขึ้นไป
+- [Node.js](https://nodejs.org/) 18 or later
 - npm
 
-## ติดตั้งและรันบน Local
+## Local setup
 
-### 1. ติดตั้ง dependencies
+### 1. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 2. ชี้ API (ถ้าต้องการใช้ backend บนเครื่องตัวเอง)
+### 2. Point to the API (optional, for a local backend)
 
-ค่าเริ่มต้นในโค้ดชี้ไป production:
+By default the code targets production:
 
 ```ts
 // src/core/api.ts
 export const API_BASE_URL = "https://thaipilacreate.eef.or.th/api";
 ```
 
-ถ้าจะยิง `thai-pila-api` บน local ให้เปลี่ยนเป็น:
+To use a local `thai-pila-api`, change it to:
 
 ```ts
 export const API_BASE_URL = "http://localhost:3001";
 ```
 
-> อย่า commit URL / credential ของเซิร์ฟเวอร์ภายในที่ไม่ควรเผยแพร่
+> Do not commit internal server URLs or credentials that should stay private.
 
-### 3. รัน development server
+### 3. Start the development server
 
 ```bash
 npm run dev
 ```
 
-Webpack dev server จะเปิดที่ [http://localhost:3001](http://localhost:3001)
+The Webpack dev server opens at [http://localhost:3001](http://localhost:3001).
 
-**หมายเหตุ:** พอร์ต `3001` ชนกับ `thai-pila-api`  
-ถ้ารันทั้งคู่พร้อมกัน ให้เปลี่ยนพอร์ตใน `webpack/webpack.dev.js` เช่น:
+**Note:** Port `3001` conflicts with `thai-pila-api`.  
+If you run both at the same time, change the port in `webpack/webpack.dev.js`, for example:
 
 ```js
 devServer: {
@@ -50,27 +50,27 @@ devServer: {
 }
 ```
 
-แล้วเปิด [http://localhost:8080](http://localhost:8080) แทน
+Then open [http://localhost:8080](http://localhost:8080) instead.
 
-### 4. ทดสอบเกมแบบไม่มี URL params
+### 4. Testing without URL params
 
-ถ้าเปิดหน้าเปล่าโดยไม่มี query string เกมจะใช้ UUID fallback ใน `src/main.ts` (`DEV_FALLBACK_*`)  
-แก้ UUID เหล่านั้นให้ตรงกับข้อมูลในฐานข้อมูลของคุณเมื่อทดสอบ local
+If you open the page with no query string, the game uses the fallback UUIDs in `src/main.ts` (`DEV_FALLBACK_*`).  
+Update those UUIDs to match your local database when testing locally.
 
-ตัวอย่าง URL เมื่อมี uuid จริง:
+Example URLs with real UUIDs:
 
 ```text
 http://localhost:8080/?game=<game-uuid>
 http://localhost:8080/?sequence=<sequence-uuid>
 ```
 
-## สคริปต์
+## Scripts
 
-| คำสั่ง | คำอธิบาย |
-|--------|----------|
-| `npm run dev` | รัน webpack-dev-server (hot reload) |
-| `npm run build` | build production ไปที่โฟลเดอร์ `dist` |
-| `npm run build:dev` | build ด้วย config development |
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start webpack-dev-server (hot reload) |
+| `npm run build` | Production build to the `dist` folder |
+| `npm run build:dev` | Build with the development config |
 
 ## Deploy
 
@@ -78,12 +78,12 @@ http://localhost:8080/?sequence=<sequence-uuid>
 npm run build
 ```
 
-อัปโหลดเนื้อหาทั้งหมดในโฟลเดอร์ `dist` ไปยัง web server
+Upload everything inside the `dist` folder to your web server.
 
-## โครงสร้างที่เกี่ยวข้อง
+## Related projects
 
-| โปรเจค | บทบาท |
-|--------|--------|
-| `thai-pila-api` | Backend ที่เสิร์ฟข้อมูลเกม |
-| `thai-pila-create` | สร้างและแก้เนื้อหาเกม |
-| `thai-pila-web` | เว็บหน้าบ้าน |
+| Project | Role |
+|---------|------|
+| `thai-pila-api` | Backend that serves game data |
+| `thai-pila-create` | Create and edit game content |
+| `thai-pila-web` | Public website |

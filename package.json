@@ -1,0 +1,36 @@
+{
+  "name": "0923_eef_BaseGame",
+  "version": "1.0.0",
+  "description": "This is a Phaser project template that uses Webpack TypeScript for bundling. It supports hot-reloading for quick development workflow and includes scripts to generate production-ready builds.\r ### Versions",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack serve --config webpack/webpack.dev.js",
+    "build": "webpack --config webpack/webpack.prod.js",
+    "build:dev": "webpack --config webpack/webpack.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3DTVTech/0923_eef_BaseGame.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/3DTVTech/0923_eef_BaseGame/issues"
+  },
+  "homepage": "https://github.com/3DTVTech/0923_eef_BaseGame#readme",
+  "dependencies": {
+    "@knowlearning/agents": "^0.9.190",
+    "phaser": "^3.90.0"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^14.0.0",
+    "html-webpack-plugin": "^5.6.5",
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.9.3",
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  }
+}

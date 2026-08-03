@@ -21,8 +21,7 @@ By default the code targets production:
 
 ```ts
 // src/core/api.ts
-export const API_BASE_URL = "https://thaipilacreate.eef.or.th/api";
-```
+
 
 To use a local `thai-pila-api`, change it to:
 
